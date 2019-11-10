@@ -2,13 +2,20 @@ import React from 'react';
 import './App.css';
 
 class CafFirstFloor extends React.Component {
+    handleClick() {
+        console.log("you clicked on me");
+    }
     createSquareRectangleBoothTables = () => {
         let tables = []
         let tablesOrder = ["sq", "long", "long", "aisle", "long", "long", "sq","booth"]
         for(let i = 0; i < 6; i++) {
             let tableRow = []
-            tablesOrder.forEach((tableType) => {
-                tableRow.push(<div className={tableType}></div>)
+            tablesOrder.forEach((tableType, index) => {
+                tableRow.push(<div 
+                    className={tableType} 
+                    onClick={() => this.handleClick()}
+                    key={`${i}${index}${tableType}`}>
+                    </div>)
             })
             tables.push(tableRow)
         }
@@ -20,9 +27,12 @@ class CafFirstFloor extends React.Component {
             ['', 'circle', '', 'circle', '', 'circle', '', ''],
             ['', '', 'circle', '', 'circle', '', '', '']
         ]
-        tablesOrder.forEach((tableRowOrder) => {
-            tableRowOrder.forEach((tableType) => {
-                tables.push(<div className={tableType}></div>)
+        tablesOrder.forEach((tableRowOrder, index1) => {
+            tableRowOrder.forEach((tableType, index2) => {
+                tables.push(<div 
+                    className={tableType}
+                    key={`${index1}${index2}${tableType}`}>
+                    </div>)
             })
         })
         return tables
@@ -47,19 +57,16 @@ class CafFirstFloor extends React.Component {
                 "name": "Circular Tables"
             }
         ]
-        legendOrder.forEach((elem) => {
-            legend.push(<div className={elem.tableType}></div>)
-            legend.push(<div className="label">{`${elem.name}`}</div>)
+        legendOrder.forEach((elem, index) => {
+            legend.push(<div className={elem.tableType} key={`${index}${elem.tableType}`}></div>)
+            legend.push(<div className="label" key={`${index}${elem.name}`}>{`${elem.name}`}</div>)
         })
         return legend
     }
     render() {
-        const rows = 6;
-
-
         return (
             <div>
-                <div class="header">
+                <div className="header">
                     <h1>Tap your Table</h1>
                 </div>
                 <div className="caf-first-floor">
