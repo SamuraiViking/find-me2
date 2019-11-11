@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import CafFirstFloor from './CafFirstFloor.js'
 import CafSecondFloor from './CafSecondFloor'
+import ConfirmSelectedTable from './ConfirmSelectedTable'
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -15,8 +16,8 @@ function App() {
     <div>
       <Switch>
         <Route path="/2" component={CafSecondFloor} />
-        <Route path="/:tableID" component={CafFirstFloor} />
-        <Route path="/" component={CafFirstFloor} />
+        <Route path="/:floor/:tableID" component={ConfirmSelectedTable} />
+        <Route path="/" component={CafFirstFloor} /> 
       </Switch>
     </div>
   );

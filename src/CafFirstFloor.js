@@ -4,21 +4,22 @@ import './App.css';
 
 class CafFirstFloor extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = { newTableSelected: false };
-        this.selectedTableID = props.match.params.tableID
-    }
-
-    selectedTableID() {
-        return useParams();
+        super(props)
+        this.state = {
+            showConfirm: false,
+            selectedTableKey: null,
+        }
     }
 
     handleClick(key, e) {
         if(key.includes("white")) {
             return
         }
-        this.props.history.push(`/${key}`);
-        this.selectedTableID = this.props.match.params.tableID
+
+        this.setState({
+            showConfirm: true,
+            selectedTableKey: key,
+        })
     }
 
     createSquareRectangleBoothTables = () => {
@@ -28,7 +29,7 @@ class CafFirstFloor extends React.Component {
             let tableRow = []
             tableColumnsColor.forEach((color, column) => {
                 let key = `${row}${column}${color}`;
-                let tableColor = key === this.selectedTableID ? "purple" : color
+                let tableColor = key === this.state.selectedTableKey ? "purple" : color
                 tableRow.push(
                         <div
                             onClick={this.handleClick.bind(this, key)}
@@ -96,8 +97,6 @@ class CafFirstFloor extends React.Component {
             <div>
                 <div className="header">
                     <h1>Tap your Table</h1>
-                    <h1>{this.selectedTableID}</h1>
-                    <Link to="/2">Go to Second Floor</Link>
                 </div>
                 <div className="caf-first-floor">
                     {this.createCircleTables()}
