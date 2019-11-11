@@ -13,10 +13,8 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route path="/firstfloor">
-          <CafFirstFloor />
-        </Route>
-        <Route path="/secondfloor">
+        <Route path="/" exact component={CafFirstFloor} />
+        <Route path="/2">
           <h1>Second Floor</h1>
         </Route>
       </Switch>

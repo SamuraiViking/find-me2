@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
 
 class CafFirstFloor extends React.Component {
@@ -76,6 +77,7 @@ class CafFirstFloor extends React.Component {
             <div>
                 <div className="header">
                     <h1>Tap your Table</h1>
+                    <Link to="/2">Go to Second Floor</Link>
                 </div>
                 <div className="caf-first-floor">
                     {this.createCircleTables()}
