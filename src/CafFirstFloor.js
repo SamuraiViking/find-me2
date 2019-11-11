@@ -2,19 +2,20 @@ import React from 'react';
 import './App.css';
 
 class CafFirstFloor extends React.Component {
-    handleClick(key, event) {
-        console.log(key);
+    handleClick(key, e) {
+        console.log(key, e.target);
     }
     createSquareRectangleBoothTables = () => {
         let tables = []
-        let tablesOrder = ["sq", "long", "long", "aisle", "long", "long", "sq","booth"]
+        let tablesOrder = ["green", "black", "black", "white", "black", "black", "green","red"]
         for(let i = 0; i < 6; i++) {
             let tableRow = []
-            tablesOrder.forEach((tableType, index) => {
-                let key = `${i}${index}${tableType}`;
-                tableRow.push(<div 
-                    className={tableType} 
+            tablesOrder.forEach((tableColor, index) => {
+                let key = `${i}${index}${tableColor}`;
+                tableRow.push(<div
+                    style={{background: tableColor}}
                     onClick={this.handleClick.bind(this, key)}
+                    keyprop={key}
                     key={key}>
                     </div>)
             })
@@ -25,15 +26,18 @@ class CafFirstFloor extends React.Component {
     createCircleTables = () => {
         let tables = []
         let tablesOrder = [
-            ['', 'circle', '', 'circle', '', 'circle', '', ''],
-            ['', '', 'circle', '', 'circle', '', '', '']
+            ['white', 'blue', 'white', 'blue', 'white', 'blue', 'white', 'white'],
+            ['white', 'white', 'blue', 'white', 'blue', 'white', 'white', 'white']
         ]
         tablesOrder.forEach((tableRowOrder, index1) => {
-            tableRowOrder.forEach((tableType, index2) => {
-                let key = `${index1}${index2}${tableType}`
+            tableRowOrder.forEach((tableColor, index2) => {
+                let key = `${index1}${index2}${tableColor}`
                 tables.push(<div 
-                    className={tableType}
-                    key={key}>
+                    style={{background: tableColor}}
+                    className="circle"
+                    key={key}
+                    onClick={this.handleClick.bind(this, key)}
+                    keyprop={key}>
                     </div>)
             })
         })
@@ -43,26 +47,26 @@ class CafFirstFloor extends React.Component {
         let legend = []
         let legendOrder = [
             {
-                "tableType": "sq",
+                "color": "green",
                 "name": "Two Person Table"
             },
             {
-                "tableType": "long",
+                "color": "black",
                 "name": "Long Table"
             },
             {
-                "tableType": "booth",
+                "color": "red",
                 "name": "Booth Tables"
             },
             {
-                "tableType": "circle",
+                "color": "blue",
                 "name": "Circular Tables"
             }
         ]
         legendOrder.forEach((elem, index) => {
             let legendTableKey = `${index}${elem.tableType}`
             let legendLabelKey = `${index}${elem.name}${elem.name}`
-            legend.push(<div className={elem.tableType} key={legendTableKey}></div>)
+            legend.push(<div style={{background: elem.color }} key={legendTableKey}></div>)
         legend.push(<div className="label" key={legendLabelKey}>{elem.name}</div>)
         })
         return legend

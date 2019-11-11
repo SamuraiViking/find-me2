@@ -1,11 +1,32 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 import CafFirstFloor from './CafFirstFloor.js'
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
-    <CafFirstFloor />
+    <div>
+      <Switch>
+        <Route path="/firstfloor">
+          <CafFirstFloor />
+        </Route>
+        <Route path="/secondfloor">
+          <h1>Second Floor</h1>
+        </Route>
+      </Switch>
+    </div>
   );
 }
 
-export default App;
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById("root")
+);
