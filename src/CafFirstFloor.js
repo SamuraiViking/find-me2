@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Route, useParams } from 'react-router-dom';
+import Legend from './Legend'
 import './App.css';
 
 class CafFirstFloor extends React.Component {
@@ -42,7 +43,6 @@ class CafFirstFloor extends React.Component {
         }
         return tables
     }
-
     createCircleTables = () => {
         let tables = []
         let tableColors = [
@@ -52,8 +52,9 @@ class CafFirstFloor extends React.Component {
         tableColors.forEach((rowColors, row) => {
             rowColors.forEach((color, column) => {
                 let key = `${row}${column}${color}`
+                let tableColor = key === this.state.selectedTableKey ? "purple" : color
                 tables.push(<div 
-                    style={{background: color}}
+                    style={{background: tableColor}}
                     className="circle"
                     key={key}
                     keyprop={key}
@@ -63,34 +64,6 @@ class CafFirstFloor extends React.Component {
             })
         })
         return tables
-    }
-    createTablesLegend = () => {
-        let legend = []
-        let legendKeys = [
-            {
-                "color": "green",
-                "name": "Two Person Table"
-            },
-            {
-                "color": "black",
-                "name": "Long Table"
-            },
-            {
-                "color": "red",
-                "name": "Booth Tables"
-            },
-            {
-                "color": "blue",
-                "name": "Circular Tables"
-            }
-        ]
-        legendKeys.forEach((key, index) => {
-            let legendTableKey = `${index}${key.color}`
-            let legendLabelKey = `${index}${key.name}${key.name}`
-            legend.push(<div style={{background: key.color }} key={legendTableKey}></div>)
-        legend.push(<div className="label" key={legendLabelKey}>{key.name}</div>)
-        })
-        return legend
     }
     render() {
         return (
@@ -103,7 +76,7 @@ class CafFirstFloor extends React.Component {
                     <div className="blank-row"></div>
                     {this.createSquareRectangleBoothTables()}
                     <div className="blank-row"></div>
-                    {this.createTablesLegend()}
+                    <Legend />
                 </div>
             </div>
         );
