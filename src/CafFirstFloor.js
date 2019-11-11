@@ -1,11 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, useParams } from 'react-router-dom';
 import './App.css';
 
 class CafFirstFloor extends React.Component {
-    handleClick(key, e) {
-        console.log(key, e.target);
+    constructor(props) {
+        super(props);
+        this.state = { newTableSelected: false };
+        this.selectedTableID = props.match.params.tableID
     }
+
+    selectedTableID() {
+        return useParams();
+    }
+
+    handleClick(key, e) {
+        if(key.includes("white")) {
+            return
+        }
+        this.props.history.push(`/${key}`);
+        this.selectedTableID = this.props.match.params.tableID
+    }
+
     createSquareRectangleBoothTables = () => {
         let tables = []
         let tableColumnsColor = ["green", "black", "black", "white", "black", "black", "green","red"]
@@ -13,17 +28,20 @@ class CafFirstFloor extends React.Component {
             let tableRow = []
             tableColumnsColor.forEach((color, column) => {
                 let key = `${row}${column}${color}`;
-                tableRow.push(<div
-                    style={{background: color}}
-                    onClick={this.handleClick.bind(this, key)}
-                    keyprop={key}
-                    key={key}>
-                    </div>)
+                let tableColor = key === this.selectedTableID ? "purple" : color
+                tableRow.push(
+                        <div
+                            onClick={this.handleClick.bind(this, key)}
+                            style={{background: tableColor}}
+                            keyprop={key}
+                            key={key}>
+                        </div>)
             })
             tables.push(tableRow)
         }
         return tables
     }
+
     createCircleTables = () => {
         let tables = []
         let tableColors = [
@@ -37,8 +55,9 @@ class CafFirstFloor extends React.Component {
                     style={{background: color}}
                     className="circle"
                     key={key}
+                    keyprop={key}
                     onClick={this.handleClick.bind(this, key)}
-                    keyprop={key}>
+                    >
                     </div>)
             })
         })
@@ -77,6 +96,7 @@ class CafFirstFloor extends React.Component {
             <div>
                 <div className="header">
                     <h1>Tap your Table</h1>
+                    <h1>{this.selectedTableID}</h1>
                     <Link to="/2">Go to Second Floor</Link>
                 </div>
                 <div className="caf-first-floor">
