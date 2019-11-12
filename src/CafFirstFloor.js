@@ -9,12 +9,15 @@ class CafFirstFloor extends React.Component {
         this.state = {
             showConfirm: false,
             selectedTableKey: false,
+            showSendLink: true,
         }
     }
 
     componentWillMount() {
         this.setState({
-            selectedTableKey: this.props.tableID
+            selectedTableKey: this.props.tableID,
+            showConfirm: this.props.showConfirm,
+            showSendLink: this.props.showSendLink,
         })
     }
 
@@ -74,19 +77,15 @@ class CafFirstFloor extends React.Component {
     render() {
         return (
             <div>
-                <div className="header">
-                    <h1>Tap your Table</h1>
-                </div>
                 <div className="caf-first-floor">
                     {this.createCircleTables()}
                     <div className="blank-row"></div>
                     {this.createSquareRectangleBoothTables()}
                     <div className="blank-row"></div>
-                    <Legend />
                     {
-                        this.state.showConfirm ?
-                        <Link to={`/1/${this.state.selectedTableKey}`} className="confirm-button btn">Confirm</Link>
-                        : 
+                        this.state.showSendLink ?
+                        <h1>{window.location.href}</h1>
+                        :
                         null
                     }
                 </div>

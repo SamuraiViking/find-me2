@@ -12,9 +12,8 @@ function App() {
   return (
     <div class="App">
       <Switch>
-        <Route path="/2" component={CafSecondFloor} />
         <Route path="/:floor/:tableID" component={ConfirmSelectedTable} />
-        <Route path="" component={CafFirstFloor} /> 
+        <Route path="/" component={ConfirmSelectedTable} /> 
       </Switch>
     </div>
   );

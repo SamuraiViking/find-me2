@@ -26,7 +26,8 @@ const Legend = () => {
         legend.push(<div style={{background: key.color }} key={legendTableKey}></div>)
         legend.push(<div className="label" key={legendLabelKey}>{key.name}</div>)
     })
-    return legend
+    return <div class="legend">{legend}</div>
+        
 }
 
 export default Legend;

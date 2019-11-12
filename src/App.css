@@ -16,6 +16,16 @@
   padding: 10px;
 }
 
+.legend {
+  display: grid;
+  grid-template-columns: repeat(8, 12.5%);
+  grid-template-rows: repeat(11, 50px );
+  row-gap: 1px;
+  column-gap: 1px;
+  margin: 0px auto 50px auto;
+  padding: 10px;
+}
+
 .confirm-button {
   padding: 15px 45px; 
   font-size: 22px;
