@@ -14,7 +14,7 @@ function App() {
       <Switch>
         <Route path="/2" component={CafSecondFloor} />
         <Route path="/:floor/:tableID" component={ConfirmSelectedTable} />
-        <Route path="/" component={CafFirstFloor} /> 
+        <Route path="" component={CafFirstFloor} /> 
       </Switch>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import Legend from './Legend'
+import { Link } from 'react-router-dom'
 import './App.css';
 
 class CafFirstFloor extends React.Component {
@@ -7,7 +8,7 @@ class CafFirstFloor extends React.Component {
         super(props)
         this.state = {
             showConfirm: false,
-            selectedTableKey: null,
+            selectedTableKey: false,
         }
     }
 
@@ -78,7 +79,7 @@ class CafFirstFloor extends React.Component {
                     <Legend />
                     {
                         this.state.showConfirm ?
-                        <button className="confirm-button">Confirm</button>
+                        <Link to={`/1/${this.state.selectedTableKey}`} className="confirm-button btn">Confirm</Link>
                         : 
                         null
                     }

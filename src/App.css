@@ -17,11 +17,21 @@
 }
 
 .confirm-button {
+  padding: 15px 45px; 
+  font-size: 22px;
   position: fixed;
-  height: 50px;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   bottom: 0px;
+  background: #709CA8;
+  box-shadow: #74a3b0;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.confirm-button:active {
+    box-shadow: 0 0 #74a3b0; background-color: #709CA8;
 }
 
 .header {

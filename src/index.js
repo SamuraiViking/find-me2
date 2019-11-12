@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './App'
 import * as serviceWorker from './serviceWorker';
 
+console.log('Server is listening on http://localhost:5000');
+
 ReactDOM.render(
-    <Router>
+    <Router basename="/">
       <App />
     </Router>,
     document.getElementById("root")
