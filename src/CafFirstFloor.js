@@ -13,18 +13,12 @@ class CafFirstFloor extends React.Component {
         }
     }
 
-    componentWillMount() {
-        this.setState({
-            selectedTableKey: this.props.tableID,
-            showConfirm: this.props.showConfirm,
-            showSendLink: this.props.showSendLink,
-        })
-    }
-
     handleClick(key, e) {
         if(key.includes("white")) {
             return
         }
+
+        this.props.onSelectTable()
 
         this.setState({
             showConfirm: true,
@@ -82,12 +76,6 @@ class CafFirstFloor extends React.Component {
                     <div className="blank-row"></div>
                     {this.createSquareRectangleBoothTables()}
                     <div className="blank-row"></div>
-                    {
-                        this.state.showSendLink ?
-                        <h1>{window.location.href}</h1>
-                        :
-                        null
-                    }
                 </div>
             </div>
         );

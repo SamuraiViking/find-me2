@@ -11,25 +11,29 @@ class ConfirmSelectedTable extends React.Component {
         }
     }
 
-    handleConfirmTable() {
+    handleSelectTable() {
         this.setState({
             confirmed: true,
         })
+        console.log("running")
     }
 
     render() {
         const tableID = this.props.match.params.tableID
         return(
             <div>
+                {this.state.confirmed ?
+                 "confirmed"
+                 :
+                 "not confirmed"
+                }
                 <div>
                     <h1 className="header">Tap your Table</h1>
                 </div>
                 <CafFirstFloor 
-                    clickable={false}
+                    clickable={true}
                     tableID={tableID}
-                    showConfirm={false}
-                    showSendLink={true}
-                    onConfirmTable={this.handleConfirmTable}
+                    onSelectTable={this.handleSelectTable.bind(this)}
                 />
                 <Legend />
                 {
