@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link, Route, useParams } from 'react-router-dom';
 import Legend from './Legend'
 import './App.css';
 
@@ -77,6 +76,12 @@ class CafFirstFloor extends React.Component {
                     {this.createSquareRectangleBoothTables()}
                     <div className="blank-row"></div>
                     <Legend />
+                    {
+                        this.state.showConfirm ?
+                        <button className="confirm-button">Confirm</button>
+                        : 
+                        null
+                    }
                 </div>
             </div>
         );

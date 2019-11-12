@@ -1,5 +1,10 @@
 
 
+.App {
+  width: 100%;
+  max-width: 500px;
+  margin: 0px auto;
+}
 
 .caf-first-floor {
   display: grid;
@@ -9,7 +14,14 @@
   column-gap: 1px;
   margin: 0px auto 50px auto;
   padding: 10px;
+}
+
+.confirm-button {
+  position: fixed;
+  height: 50px;
+  width: 100%;
   max-width: 500px;
+  bottom: 0px;
 }
 
 .header {
