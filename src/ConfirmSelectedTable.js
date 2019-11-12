@@ -3,10 +3,15 @@ import CafFirstFloor from './CafFirstFloor'
 
 class ConfirmSelectedTable extends React.Component {
     render() {
+        const tableID = this.props.match.params.tableID
         return(
-            <CafFirstFloor 
-                clickable={false}
-            />
+            <div>
+                {tableID}
+                <CafFirstFloor 
+                    clickable={false}
+                    tableID={tableID}
+                />
+            </div>
         )
     }
 }

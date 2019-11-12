@@ -12,6 +12,12 @@ class CafFirstFloor extends React.Component {
         }
     }
 
+    componentWillMount() {
+        this.setState({
+            selectedTableKey: this.props.tableID
+        })
+    }
+
     handleClick(key, e) {
         if(key.includes("white")) {
             return
