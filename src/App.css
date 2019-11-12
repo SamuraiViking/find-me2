@@ -73,3 +73,8 @@
   line-height: 50px;
   font-weight: 500;
 }
+
+.copy-link {
+  background: #cce5ff;
+  text-align: center;
+}

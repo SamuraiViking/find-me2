@@ -7,23 +7,23 @@ class CafFirstFloor extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showConfirm: false,
-            selectedTableKey: false,
-            showSendLink: true,
+            selectedTableID: null,
         }
+    }
+
+    componentWillMount() {
+        this.setState({
+            selectedTableID: this.props.selectedTableID
+        })
     }
 
     handleClick(key, e) {
         if(key.includes("white")) {
             return
         }
-
-        this.props.onSelectTable()
-
-        this.setState({
-            showConfirm: true,
-            selectedTableKey: key,
-        })
+        
+        this.setState({selectedTableID: key })
+        this.props.onSelectTable(key)
     }
 
     createSquareRectangleBoothTables = () => {
@@ -33,7 +33,7 @@ class CafFirstFloor extends React.Component {
             let tableRow = []
             tableColumnsColor.forEach((color, column) => {
                 let key = `${row}${column}${color}`;
-                let tableColor = key === this.state.selectedTableKey ? "purple" : color
+                let tableColor = key === this.state.selectedTableID ? "purple" : color
                 tableRow.push(
                         <div
                             onClick={this.handleClick.bind(this, key)}
@@ -55,7 +55,7 @@ class CafFirstFloor extends React.Component {
         tableColors.forEach((rowColors, row) => {
             rowColors.forEach((color, column) => {
                 let key = `${row}${column}${color}`
-                let tableColor = key === this.state.selectedTableKey ? "purple" : color
+                let tableColor = key === this.state.selectedTableID ? "purple" : color
                 tables.push(<div 
                     style={{background: tableColor}}
                     className="circle"

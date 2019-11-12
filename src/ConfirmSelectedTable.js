@@ -7,21 +7,32 @@ class ConfirmSelectedTable extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            confirmed: false,
+            showConfirmed: false,
+            tableConfirmed: false,
         }
+        this.selectedTableID = this.props.match.params.tableID
     }
 
-    handleSelectTable() {
+    handleSelectTable(key) {
         this.setState({
-            confirmed: true,
+            showConfirmed: true,
+            selectedTableID: key
         })
-        console.log("running")
+    }
+
+    handleTableConfirmed() {
+        this.setState({
+            tableConfirmed: true,
+            showConfirmed: false,
+        })
     }
 
     render() {
-        const tableID = this.props.match.params.tableID
+        const selectedTableID = this.props.match.params.selectedTableID
         return(
             <div>
+                {selectedTableID}
+                {this.state.selectedTableID}
                 {this.state.confirmed ?
                  "confirmed"
                  :
@@ -32,14 +43,23 @@ class ConfirmSelectedTable extends React.Component {
                 </div>
                 <CafFirstFloor 
                     clickable={true}
-                    tableID={tableID}
                     onSelectTable={this.handleSelectTable.bind(this)}
+                    selectedTableID={selectedTableID}
                 />
                 <Legend />
                 {
-                    this.state.confirmed ?
-                    <Link to={`/1/${this.state.selectedTableKey}`} className="confirm-button btn">Confirm</Link>
+                    this.state.showConfirmed ?
+                    <Link to={`/1/${this.state.selectedTableID}`} onClick={this.handleTableConfirmed.bind(this)} className="confirm-button btn">Confirm</Link>
                     : 
+                    null
+                }
+                {
+                    this.state.tableConfirmed ?
+                    <div class="copy-link">
+                        <p>Share this link to your friends</p>
+                        <p>{window.location.href}</p>
+                    </div>
+                    :
                     null
                 }
             </div>
