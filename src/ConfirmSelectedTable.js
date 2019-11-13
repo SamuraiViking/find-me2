@@ -7,7 +7,7 @@ class ConfirmSelectedTable extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showConfirmed: false,
+            tableSelected: false,
             tableConfirmed: false,
         }
         this.selectedTableID = this.props.match.params.tableID
@@ -15,7 +15,8 @@ class ConfirmSelectedTable extends React.Component {
 
     handleSelectTable(key) {
         this.setState({
-            showConfirmed: true,
+            tableSelected: true,
+            tableConfirmed: false,
             selectedTableID: key
         })
     }
@@ -23,7 +24,7 @@ class ConfirmSelectedTable extends React.Component {
     handleTableConfirmed() {
         this.setState({
             tableConfirmed: true,
-            showConfirmed: false,
+            tableSelected: false,
         })
     }
 
@@ -31,13 +32,6 @@ class ConfirmSelectedTable extends React.Component {
         const selectedTableID = this.props.match.params.selectedTableID
         return(
             <div>
-                {selectedTableID}
-                {this.state.selectedTableID}
-                {this.state.confirmed ?
-                 "confirmed"
-                 :
-                 "not confirmed"
-                }
                 <div>
                     <h1 className="header">Tap your Table</h1>
                 </div>
@@ -48,14 +42,16 @@ class ConfirmSelectedTable extends React.Component {
                 />
                 <Legend />
                 {
-                    this.state.showConfirmed ?
-                    <Link to={`/1/${this.state.selectedTableID}`} onClick={this.handleTableConfirmed.bind(this)} className="confirm-button btn">Confirm</Link>
+                    this.state.tableSelected ?
+                    <Link to={`/1/${this.state.selectedTableID}`} onClick={this.handleTableConfirmed.bind(this)}>
+                        <div className="confirm-button">Confirm</div>
+                    </Link>
                     : 
                     null
                 }
                 {
                     this.state.tableConfirmed ?
-                    <div class="copy-link">
+                    <div class="confirm-button">
                         <p>Share this link to your friends</p>
                         <p>{window.location.href}</p>
                     </div>

@@ -2,24 +2,25 @@
 
 .App {
   width: 100%;
-  max-width: 500px;
-  margin: 0px auto;
+
 }
 
 .caf-first-floor {
   display: grid;
   grid-template-columns: repeat(8, 12.5%);
-  grid-template-rows: repeat(11, 50px );
+  grid-template-rows: repeat(9, 50px );
   row-gap: 1px;
   column-gap: 1px;
   margin: 0px auto 50px auto;
   padding: 10px;
+  max-width: 500px;
+  margin: 0px auto;
 }
 
 .legend {
   display: grid;
   grid-template-columns: repeat(8, 12.5%);
-  grid-template-rows: repeat(11, 50px );
+  grid-template-rows: repeat(8, 50px );
   row-gap: 1px;
   column-gap: 1px;
   margin: 0px auto 50px auto;
@@ -27,21 +28,15 @@
 }
 
 .confirm-button {
-  padding: 15px 45px; 
+  padding: 20px; 
   font-size: 22px;
   position: fixed;
   width: 100%;
-  max-width: 400px;
   bottom: 0px;
-  background: #709CA8;
+  background-color: #cce5ff;
   box-shadow: #74a3b0;
   text-align: center;
-  text-decoration: none;
   color: black;
-}
-
-.confirm-button:active {
-    box-shadow: 0 0 #74a3b0; background-color: #709CA8;
 }
 
 .header {
@@ -51,7 +46,7 @@
 .legend {
   display: grid;
   grid-template-columns: repeat(8, 12.5%);
-  grid-template-rows: repeat(7, 50px );
+  grid-template-rows: repeat(4, 50px );
   row-gap: 1px;
   column-gap: 1px;
   margin: 0px auto;

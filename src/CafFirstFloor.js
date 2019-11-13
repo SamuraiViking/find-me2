@@ -75,7 +75,6 @@ class CafFirstFloor extends React.Component {
                     {this.createCircleTables()}
                     <div className="blank-row"></div>
                     {this.createSquareRectangleBoothTables()}
-                    <div className="blank-row"></div>
                 </div>
             </div>
         );
