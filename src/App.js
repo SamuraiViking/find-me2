@@ -10,7 +10,7 @@ function App() {
   return (
     <div class="App">
       <Switch>
-        <Route path="/:floor/:selectedTableID" component={ConfirmSelectedTable} />
+        <Route path="/:floor/:selectedTableID/:sentUrl" component={ConfirmSelectedTable} />
         <Route path="/" component={ConfirmSelectedTable} /> 
       </Switch>
     </div>

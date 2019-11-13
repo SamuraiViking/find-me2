@@ -30,10 +30,11 @@ class ConfirmSelectedTable extends React.Component {
 
     render() {
         const selectedTableID = this.props.match.params.selectedTableID
+        const sentUrl = this.props.match.params.sentUrl 
         return(
             <div>
                 <div>
-                    {this.state.tableConfirmed ?
+                    {this.state.tableConfirmed || sentUrl ?
                     <h1 className="header">I'm sitting at the <span className="purple">Purple</span> table</h1>
                      :
                      <h1 className="header">Tap the table your sitting at</h1>
@@ -57,7 +58,7 @@ class ConfirmSelectedTable extends React.Component {
                     this.state.tableConfirmed ?
                     <div class="confirm-button">
                         <p>Share this link to your friends</p>
-                        <p>{window.location.href}</p>
+                        <p>{`${window.location.href}/true`}</p>
                     </div>
                     :
                     null
