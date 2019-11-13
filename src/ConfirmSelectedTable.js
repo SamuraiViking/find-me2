@@ -58,7 +58,7 @@ class ConfirmSelectedTable extends React.Component {
                     this.state.tableConfirmed ?
                     <div class="confirm-button">
                         <p>Share this link to your friends</p>
-                        <p>{`${window.location.href}/true`}</p>
+                        <input type="text" className="share-link" value={`${window.location.href}/true`} />
                     </div>
                     :
                     null
