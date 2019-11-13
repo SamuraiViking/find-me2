@@ -33,7 +33,11 @@ class ConfirmSelectedTable extends React.Component {
         return(
             <div>
                 <div>
-                    <h1 className="header">Tap your Table</h1>
+                    {this.state.tableConfirmed ?
+                    <h1 className="header">I'm sitting at the <span className="purple">Purple</span> table</h1>
+                     :
+                     <h1 className="header">Tap the table your sitting at</h1>
+                    }
                 </div>
                 <CafFirstFloor 
                     clickable={true}
