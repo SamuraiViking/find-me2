@@ -59,6 +59,7 @@ class ConfirmSelectedTable extends React.Component {
                     <div class="confirm-button">
                         <p>Share this link to your friends</p>
                         <input type="text" className="share-link" value={`${window.location.href}/true`} />
+                        <button onClick={() => {navigator.clipboard.writeText(`${window.location.href}/true`)}}>Copy</button>
                     </div>
                     :
                     null
