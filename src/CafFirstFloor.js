@@ -11,7 +11,7 @@ class CafFirstFloor extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState({
             selectedTableID: this.props.selectedTableID
         })

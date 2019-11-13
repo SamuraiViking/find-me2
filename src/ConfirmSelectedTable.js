@@ -17,7 +17,8 @@ class ConfirmSelectedTable extends React.Component {
         this.setState({
             tableSelected: true,
             tableConfirmed: false,
-            selectedTableID: key
+            selectedTableID: key,
+            linkCopied: false,
         })
     }
 
@@ -28,6 +29,9 @@ class ConfirmSelectedTable extends React.Component {
         })
     }
 
+    handleCopyLink() {
+    }
+
     render() {
         const selectedTableID = this.props.match.params.selectedTableID
         const sentUrl = this.props.match.params.sentUrl 
@@ -35,9 +39,9 @@ class ConfirmSelectedTable extends React.Component {
             <div>
                 <div>
                     {this.state.tableConfirmed || sentUrl ?
-                    <h1 className="header">I'm sitting at the <span className="purple">Purple</span> table</h1>
+                    <h1 className="header">I'm Sitting at the <br /><span className="purple">Purple</span> Table</h1>
                      :
-                     <h1 className="header">Tap the table your sitting at</h1>
+                     <h1 className="header">Tap the Table <br />your Sitting at</h1>
                     }
                 </div>
                 <CafFirstFloor 
@@ -59,8 +63,14 @@ class ConfirmSelectedTable extends React.Component {
                     <div class="confirm-button">
                         <p>Share this link to your friends</p>
                         <input type="text" className="share-link" value={`${window.location.href}/true`} />
-                        <button onClick={() => {navigator.clipboard.writeText(`${window.location.href}/true`)}}>Copy</button>
+                        <button onClick={navigator.clipboard.writeText(`${window.location.href}/true`)}>Copy</button>
                     </div>
+                    :
+                    null
+                }
+                {
+                    sentUrl ?
+                    <p className="link-copyied">Link Copied!</p>
                     :
                     null
                 }

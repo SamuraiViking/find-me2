@@ -52,6 +52,7 @@
   margin: 0px auto;
   padding: 10px;
   max-width: 500px;
+  margin-bottom: 150px;
 }
 
 .circle {
@@ -77,4 +78,8 @@
 .purple {
   background: purple;
   color: white;
+}
+
+.link-coppied {
+  color: red;
 }
